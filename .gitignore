@@ -1,0 +1,22 @@
+# dependencies
+node_modules
+
+# misc
+.idea
+.cache
+.vercel
+.output
+.eslintcache
+
+# build files
+/build/
+/public/build
+/api/index.js
+
+# environment variables
+.env
+.env.local
+.env.example
+
+# prisma
+prisma/prisma
