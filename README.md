@@ -20,7 +20,7 @@ npx create-remix --template ilangorajagopal/synthwave-stack
 - Code formatting with [Prettier](https://prettier.io)
 - Linting with [ESLint](https://eslint.org)
 - Static Types with [TypeScript](https://typescriptlang.org)
-- Google and Twitter Auth with [remix-auth](https://github.com/sergiodxa/remix-auth/) (Coming Soon)
+- Magic Links, Google and Twitter Auth with [remix-auth](https://github.com/sergiodxa/remix-auth/) (Coming Soon)
 - End-to-end testing with [Cypress](https://cypress.io) (Coming Soon)
 - Local third party request mocking with [MSW](https://mswjs.io) (Coming Soon)
 - Unit testing with [Vitest](https://vitest.dev) and [Testing Library](https://testing-library.com) (Coming Soon)
