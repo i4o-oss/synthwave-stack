@@ -20,7 +20,6 @@ api/index.js.map
 # environment variables
 .env
 .env.local
-.env.example
 
 # prisma
 prisma/prisma
