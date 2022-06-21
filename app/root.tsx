@@ -7,8 +7,13 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useTransition,
 } from '@remix-run/react'
-import styles from '../styles/tailwind.css'
+import { useEffect } from 'react'
+// @ts-ignore
+import NProgress from 'nprogress'
+import nProgressStyles from 'nprogress/nprogress.css'
+import styles from './tailwind.css'
 
 interface DocumentProps {
 	children: React.ReactNode
@@ -27,19 +32,54 @@ export const links: LinksFunction = () => {
 }
 
 export const meta: MetaFunction = () => ({
+	// TODO: Fill out the empty strings as required
 	charset: 'utf-8',
-	title: 'New Remix App',
+	'msapplication-TileColor': '#2b5797',
+	'og:site': '',
+	'og:url': '',
+	'og:title': '',
+	'og:description': '',
+	'og:image': '',
+	'theme-color': '',
+	title: '',
+	'twitter:card': 'summary_large_image',
+	'twitter:site': '',
+	'twitter:url': '',
+	'twitter:creator': '',
+	'twitter:title': '',
+	'twitter:description': '',
+	'twitter:image': '',
 	viewport: 'width=device-width,initial-scale=1',
 })
 
 const Document = (props: DocumentProps) => {
+	const transition = useTransition()
+
+	useEffect(() => {
+		// when the state is idle then we can to complete the progress bar
+		if (transition.state === 'idle') NProgress.done()
+		// and when it's something else it means it's either submitting a form or
+		// waiting for the loaders of the next location, so we start it
+		else NProgress.start()
+	}, [transition.state])
+
 	return (
 		<html lang='en' className='h-full'>
 			<head>
 				<Meta />
 				<Links />
 			</head>
-			<body>
+			<body className='h-full w-full bg-brand-900 font-sans'>
+				{process.env.NODE_ENV === 'production' ? (
+					<>
+						{/* TODO: fill data-domain */}
+						<script
+							defer
+							data-domain=''
+							src='https://plausible.io/js/plausible.js'
+						></script>
+					</>
+				) : null}
 				{props.children}
 				<ScrollRestoration />
 				<Scripts />
