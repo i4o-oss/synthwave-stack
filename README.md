@@ -13,14 +13,16 @@ npx create-remix --template ilangorajagopal/synthwave-stack
 - [Vercel deployment](https://vercel.com)
 - [PlanetScale Database](https://planetscale.com)
 - [GitHub Actions](https://github.com/features/actions) for deploy on merge to production and staging environments
-- Email/Password Authentication with [cookie-based sessions](https://remix.run/docs/en/v1/api/remix#createcookiesessionstorage)
 - Database ORM with [Prisma](https://prisma.io)
+- Magic Links, Google and Twitter Auth with [remix-auth](https://github.com/sergiodxa/remix-auth/)
+- Health check API route
+- Upload API with AWS S3
+- Transactional emails with [SendGrid](https://sendgrid.com/)
 - UI with [Radix UI](https://radix-ui.com)
 - Styling with [TailwindCSS](https://tailwindcss.com)
 - Code formatting with [Prettier](https://prettier.io)
 - Linting with [ESLint](https://eslint.org)
 - Static Types with [TypeScript](https://typescriptlang.org)
-- Magic Links, Google and Twitter Auth with [remix-auth](https://github.com/sergiodxa/remix-auth/) (Coming Soon)
 - End-to-end testing with [Cypress](https://cypress.io) (Coming Soon)
 - Local third party request mocking with [MSW](https://mswjs.io) (Coming Soon)
 - Unit testing with [Vitest](https://vitest.dev) and [Testing Library](https://testing-library.com) (Coming Soon)
@@ -43,19 +45,12 @@ Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --
 
 This starts your app in development mode, rebuilding assets on file changes.
 
-The database seed script creates a new user with some data you can use to get started:
-
--   Email: `diaz@remix.run`
--   Password: `diaziscool`
-
 ### Relevant code:
 
-// TODO: Change the description of the basic app. It's definitely not a note-taking app.
-This is a pretty simple note-taking app, but it's a good example of how you can build a full stack app with Prisma and Remix. The main functionality is creating users, logging in and out, and creating and deleting notes.
+The main functionality is creating users, logging in and out.
 
 -   creating users, and logging in and out [./app/models/user.server.ts](./app/models/user.server.ts)
 -   user sessions, and verifying them [./app/session.server.ts](./app/session.server.ts)
--   creating, and deleting notes [./app/models/note.server.ts](./app/models/note.server.ts)
 
 ## Deployment
 
@@ -65,7 +60,7 @@ All you have to do is to create a project on Vercel and choose your repo. Vercel
 
 ### Connecting to your database
 
-The database lives on [planetscale.com](https://planetscale.com). Prisma has been configured to connect to Planetscale and will work in local environment. Update the database name in `DATABASE_URL` and `SHADOW_DATABASE_URL` variables in your `.env` for local development use. Use the connection string provided on Planetscale dashboard as `DATABASE_URL` in production.
+The database lives on [planetscale.com](https://planetscale.com). Prisma has been configured to connect to Planetscale and will work in local environment. Update the database name in `DATABASE_URL` variable in your `.env` for local development use. Use the connection string provided on Planetscale dashboard as `DATABASE_URL` in production.
 
 ### Type Checking
 
