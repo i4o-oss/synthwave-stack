@@ -11,7 +11,12 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": [
+        "./app/*"
+      ],
+      "@components/*": [
+        "./common/components/*"
+      ]
     },
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,

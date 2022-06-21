@@ -1,5 +1,12 @@
 # dependencies
 node_modules
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # misc
 .idea
@@ -9,9 +16,12 @@ node_modules
 .eslintcache
 
 # build files
+/.next/
 /build/
 /public/build
-/api/index.js
+app/tailwind.css
+api/index.js
+api/index.js.map
 
 # environment variables
 .env
