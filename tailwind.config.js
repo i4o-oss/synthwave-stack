@@ -1,3 +1,5 @@
+const tailwindRadix = require('tailwindcss-radix')
+
 module.exports = {
 	content: ['./app/**/*.{js,jsx,ts,tsx}', './common/**/*.{js,jsx,ts,tsx}'],
 	theme: {
@@ -23,5 +25,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [tailwindRadix()],
 }
