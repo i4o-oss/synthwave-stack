@@ -49,6 +49,7 @@
 		"@tailwindcss/aspect-ratio": "^0.4.0",
 		"@vercel/node": "1.14.0",
 		"aws-sdk": "2.1145.0",
+		"classnames": "^2.3.1",
 		"formidable": "^2.0.1",
 		"framer-motion": "6.3.3",
 		"nanoid": "3.3.4",

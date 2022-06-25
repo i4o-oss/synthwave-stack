@@ -1,5 +1,6 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import type { FC } from 'react'
+import cx from 'classnames'
 
 export const RadioGroupRoot = RadioGroupPrimitive.Root
 export const RadioGroupIndicator = RadioGroupPrimitive.Indicator
@@ -28,7 +29,11 @@ const RadioGroup: FC<RadioGroupProps> = ({
 			{options.map((option) => (
 				<div className='flex items-center space-x-2'>
 					<RadioGroupItem
-						className='h-6 w-6 rounded-full border-2 border-brand-500 hover:bg-brand-50 hover:bg-opacity-20'
+						className={cx(
+							// Setting the background in dark properly requires a workaround (see css/tailwind.css)
+							'h-4 w-4 border border-transparent bg-gray-100 text-purple-600 dark:bg-gray-900',
+							'focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800'
+						)}
 						key={option.id}
 						id={option.id}
 						value={option.value}

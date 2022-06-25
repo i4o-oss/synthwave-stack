@@ -1,5 +1,7 @@
 import type { FC, ReactNode } from 'react'
 import * as PopoverPrimitive from '@radix-ui/react-popover'
+import cx from 'classnames'
+import { Cross1Icon } from '@radix-ui/react-icons'
 
 const PopoverRoot = PopoverPrimitive.Root
 const PopoverTrigger = PopoverPrimitive.Trigger
@@ -8,29 +10,53 @@ const PopoverArrow = PopoverPrimitive.Arrow
 const PopoverClose = PopoverPrimitive.Close
 
 interface PopoverProps {
-	arrowClassName?: string | undefined
-	close?: ReactNode | undefined
+	align?: 'start' | 'end' | 'center'
+	close?: boolean
 	children: string | ReactNode
-	contentClassName?: string
+	sideOffset?: number
+	title?: string | ReactNode
 	trigger: ReactNode
 }
 
 const Popover: FC<PopoverProps> = ({
-	arrowClassName,
-	close,
+	align = 'center',
+	close = true,
 	children,
-	contentClassName,
+	sideOffset = 4,
+	title,
 	trigger,
 }) => {
 	return (
-		<PopoverRoot>
-			<PopoverTrigger asChild>{trigger}</PopoverTrigger>
-			<PopoverContent className={contentClassName}>
-				{children}
-				<PopoverArrow className={arrowClassName} />
-				{close && <PopoverClose>{close}</PopoverClose>}
-			</PopoverContent>
-		</PopoverRoot>
+		<div className='relative inline-block text-left'>
+			<PopoverRoot>
+				<PopoverTrigger asChild>{trigger}</PopoverTrigger>
+				<PopoverContent
+					align={align}
+					className={cx(
+						'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
+						'w-48 rounded-lg p-4 shadow-md md:w-56',
+						'bg-white dark:bg-gray-800'
+					)}
+					sideOffset={sideOffset}
+				>
+					<PopoverArrow className='fill-current text-white dark:text-gray-800' />
+					<h3 className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+						{title}
+					</h3>
+					{children}
+					{close && (
+						<PopoverClose
+							className={cx(
+								'absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1',
+								'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
+							)}
+						>
+							<Cross1Icon className='h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400' />
+						</PopoverClose>
+					)}
+				</PopoverContent>
+			</PopoverRoot>
+		</div>
 	)
 }
 
