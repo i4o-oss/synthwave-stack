@@ -22,4 +22,5 @@ export interface ButtonProps {
 	shadow?: string
 	size?: ButtonSize
 	textColor?: string
+	type?: 'button' | 'submit' | 'reset'
 }

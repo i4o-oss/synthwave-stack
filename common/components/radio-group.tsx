@@ -31,16 +31,19 @@ const RadioGroup: FC<RadioGroupProps> = ({
 					<RadioGroupItem
 						className={cx(
 							// Setting the background in dark properly requires a workaround (see css/tailwind.css)
-							'h-4 w-4 border border-transparent bg-gray-100 text-purple-600 dark:bg-gray-900',
-							'focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800'
+							'h-4 w-4 rounded-full border border-transparent bg-gray-100 text-purple-600 dark:bg-gray-900',
+							'focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800',
+							'border border-transparent radix-state-checked:border-brand-500'
 						)}
 						key={option.id}
 						id={option.id}
 						value={option.value}
 					>
-						<RadioGroupIndicator className='relative flex h-full w-full items-center justify-center after:block after:h-3 after:w-3 after:rounded-full after:bg-brand-500 after:content-[""]' />
+						<RadioGroupIndicator className='relative flex h-full w-full items-center justify-center rounded-full after:block after:h-2 after:w-2 after:rounded-full after:bg-brand-500 after:content-[""]' />
 					</RadioGroupItem>
-					<label htmlFor={option.id}>{option.label}</label>
+					<label className='text-sm' htmlFor={option.id}>
+						{option.label}
+					</label>
 				</div>
 			))}
 		</RadioGroupRoot>

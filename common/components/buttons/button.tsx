@@ -1,7 +1,5 @@
-import React from 'react'
 import type { FC } from 'react'
 import type { ButtonProps } from './types'
-import { ButtonSize } from './types'
 
 const Button: FC<ButtonProps> = ({
 	bg = 'bg-gray-700',
@@ -13,14 +11,15 @@ const Button: FC<ButtonProps> = ({
 	onClick,
 	padding = 'px-4 py-1',
 	shadow = '',
-	size = ButtonSize.MD,
 	textColor = 'text-gray-200',
+	type = 'button',
 }) => {
 	return (
 		<button
-			className={`focus-visible:ring-blend-darken inline-flex justify-center rounded-md border border-transparent text-sm font-semibold hover:bg-blend-darken focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${className} ${bg} ${padding} ${shadow} ${textColor}`}
+			className={`focus-visible:ring-blend-darken inline-flex items-center justify-center rounded-md border border-transparent text-sm font-semibold hover:bg-blend-darken focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${className} ${bg} ${padding} ${shadow} ${textColor}`}
 			disabled={isDisabled}
 			onClick={onClick}
+			type={type}
 		>
 			{isLoading && (
 				<svg

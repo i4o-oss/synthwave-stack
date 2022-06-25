@@ -2,12 +2,12 @@ import type { FC } from 'react'
 import type { ButtonProps } from './types'
 import Button from './button'
 
-type ButtonPrimaryProps = ButtonProps & {
+interface PrimaryButtonProps extends ButtonProps {
 	bg?: string
 	shadow?: string
 }
 
-const ButtonPrimary: FC<ButtonPrimaryProps> = ({
+const PrimaryButton: FC<PrimaryButtonProps> = ({
 	bg = 'bg-brand-500',
 	children,
 	className,
@@ -17,6 +17,7 @@ const ButtonPrimary: FC<ButtonPrimaryProps> = ({
 	onClick,
 	shadow = 'shadow-md',
 	textColor = 'text-white',
+	type = 'button',
 }) => {
 	return (
 		<Button
@@ -27,10 +28,11 @@ const ButtonPrimary: FC<ButtonPrimaryProps> = ({
 			loadingText={loadingText}
 			onClick={onClick}
 			textColor={textColor}
+			type={type}
 		>
 			{children}
 		</Button>
 	)
 }
 
-export default ButtonPrimary
+export default PrimaryButton

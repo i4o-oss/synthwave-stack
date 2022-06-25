@@ -2,12 +2,12 @@ import type { FC } from 'react'
 import type { ButtonProps } from './types'
 import Button from './button'
 
-type ButtonDangerProps = ButtonProps & {
+interface DangerButtonProps extends ButtonProps {
 	bg?: string
 	shadow?: string
 }
 
-const ButtonDanger: FC<ButtonDangerProps> = ({
+const DangerButton: FC<DangerButtonProps> = ({
 	bg = 'bg-red-500',
 	children,
 	className,
@@ -17,6 +17,7 @@ const ButtonDanger: FC<ButtonDangerProps> = ({
 	onClick,
 	shadow = '',
 	textColor = 'text-white',
+	type = 'button',
 }) => {
 	return (
 		<Button
@@ -27,10 +28,11 @@ const ButtonDanger: FC<ButtonDangerProps> = ({
 			loadingText={loadingText}
 			onClick={onClick}
 			textColor={textColor}
+			type={type}
 		>
 			{children}
 		</Button>
 	)
 }
 
-export default ButtonDanger
+export default DangerButton

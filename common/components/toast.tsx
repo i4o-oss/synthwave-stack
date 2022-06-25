@@ -83,3 +83,5 @@ const Toast: FC<ToastProps> = ({
 		</ToastProvider>
 	)
 }
+
+export default Toast

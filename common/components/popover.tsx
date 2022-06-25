@@ -34,13 +34,14 @@ const Popover: FC<PopoverProps> = ({
 					align={align}
 					className={cx(
 						'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
-						'w-48 rounded-lg p-4 shadow-md md:w-56',
-						'bg-white dark:bg-gray-800'
+						'w-auto rounded-lg p-4 shadow-md',
+						'bg-white dark:bg-gray-700',
+						'text-black dark:text-white'
 					)}
 					sideOffset={sideOffset}
 				>
-					<PopoverArrow className='fill-current text-white dark:text-gray-800' />
-					<h3 className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+					<PopoverArrow className='fill-current text-white dark:text-gray-700' />
+					<h3 className='text-md font-medium text-gray-900 dark:text-gray-100'>
 						{title}
 					</h3>
 					{children}

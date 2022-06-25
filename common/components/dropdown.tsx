@@ -10,6 +10,7 @@ export const DropdownMenuItem = DropdownMenuPrimitive.Item
 interface DropdownMenuItemType {
 	icon?: ReactNode
 	label: string | ReactNode
+	onSelect?: (e: Event) => void
 	shortcut?: string
 }
 
@@ -39,13 +40,14 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
 					)}
 					sideOffset={sideOffset}
 				>
-					{items.map(({ label, icon, shortcut }, i) => (
+					{items.map(({ label, icon, onSelect, shortcut }, i) => (
 						<DropdownMenuItem
 							key={`${label}-${i}`}
 							className={cx(
 								'flex cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
 								'text-gray-400 focus:bg-gray-50 dark:text-gray-500 dark:focus:bg-gray-900'
 							)}
+							onSelect={(e) => onSelect?.(e)}
 						>
 							{icon}
 							<span className='flex-grow text-gray-700 dark:text-gray-300'>
