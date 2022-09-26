@@ -5,7 +5,7 @@
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
-npx create-remix --template ilangorajagopal/synthwave-stack
+npx create-remix --template i4o-oss/synthwave-stack
 ```
 
 ## What's in the stack
