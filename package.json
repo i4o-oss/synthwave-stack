@@ -63,7 +63,9 @@
 		"remix-auth-email-link": "1.5.0",
 		"remix-auth-google": "1.1.0",
 		"remix-auth-twitter": "0.1.0",
-		"tailwindcss-radix": "2.6.1"
+		"tailwindcss-radix": "2.6.1",
+		"zod": "^3.19.1",
+		"zodix": "^0.2.0"
 	},
 	"devDependencies": {
 		"@remix-run/dev": "1.7.4",

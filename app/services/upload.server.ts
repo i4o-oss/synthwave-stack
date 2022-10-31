@@ -14,12 +14,11 @@ const storage = new S3({
 export const uploadHandler: UploadHandler = async ({
 	name,
 	filename,
-	stream,
+	data,
 	// userId,
 	// postId,
 }) => {
 	if (name !== 'image') {
-		stream.resume()
 		return
 	}
 
@@ -27,7 +26,7 @@ export const uploadHandler: UploadHandler = async ({
 		.upload({
 			Bucket: '<s3-bucket-name>', // TODO: Update S3 bucket name
 			Key: `images/${filename}`, // TODO: (Optional) Update uploads path
-			Body: stream,
+			Body: data,
 		})
 		.promise()
 
