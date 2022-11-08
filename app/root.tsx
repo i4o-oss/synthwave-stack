@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import {
 	Links,
@@ -7,6 +7,7 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useFetchers,
 	useTransition,
 } from '@remix-run/react'
 import { useEffect } from 'react'
@@ -28,6 +29,7 @@ export const links: LinksFunction = () => {
 			href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap',
 		},
 		{ rel: 'stylesheet', href: styles },
+		{ rel: 'stylesheet', href: nProgressStyles },
 	]
 }
 
@@ -54,14 +56,33 @@ export const meta: MetaFunction = () => ({
 
 const Document = (props: DocumentProps) => {
 	const transition = useTransition()
+	const fetchers = useFetchers()
+
+	/**
+	 * This gets the state of every fetcher active on the app and combine it with
+	 * the state of the global transition (Link and Form), then use them to
+	 * determine if the app is idle or if it's loading.
+	 * Here we consider both loading and submitting as loading.
+	 */
+	let state = useMemo<'idle' | 'loading'>(
+		function getGlobalState() {
+			let states = [
+				transition.state,
+				...fetchers.map((fetcher) => fetcher.state),
+			]
+			if (states.every((state) => state === 'idle')) return 'idle'
+			return 'loading'
+		},
+		[transition.state, fetchers]
+	)
 
 	useEffect(() => {
-		// when the state is idle then we can to complete the progress bar
-		if (transition.state === 'idle') NProgress.done()
 		// and when it's something else it means it's either submitting a form or
 		// waiting for the loaders of the next location, so we start it
-		else NProgress.start()
-	}, [transition.state])
+		if (state === 'loading') NProgress.start()
+		// when the state is idle then we can to complete the progress bar
+		if (state === 'idle') NProgress.done()
+	}, [transition.state, state])
 
 	return (
 		<html lang='en' className='h-full'>

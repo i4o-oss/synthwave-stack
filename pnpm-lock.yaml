@@ -33,6 +33,7 @@ specifiers:
   '@tailwindcss/aspect-ratio': 0.4.2
   '@types/eslint': 8.4.10
   '@types/formidable': 2.0.5
+  '@types/nprogress': ^0.2.0
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
   '@vercel/node': 2.6.2
@@ -98,6 +99,7 @@ dependencies:
   '@sendgrid/client': 7.7.0
   '@sendgrid/mail': 7.7.0
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.2
+  '@types/nprogress': 0.2.0
   '@vercel/node': 2.6.2
   aws-sdk: 2.1249.0
   classnames: 2.3.2
@@ -3796,6 +3798,10 @@ packages:
   /@types/node/18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
     dev: true
+
+  /@types/nprogress/0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
+    dev: false
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}

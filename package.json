@@ -47,6 +47,7 @@
 		"@sendgrid/client": "7.7.0",
 		"@sendgrid/mail": "7.7.0",
 		"@tailwindcss/aspect-ratio": "0.4.2",
+		"@types/nprogress": "^0.2.0",
 		"@vercel/node": "2.6.2",
 		"aws-sdk": "2.1249.0",
 		"classnames": "2.3.2",
