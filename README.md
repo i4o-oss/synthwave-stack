@@ -23,7 +23,7 @@ npx create-remix --template i4o-oss/synthwave-stack
 - Code formatting with [Prettier](https://prettier.io)
 - Linting with [ESLint](https://eslint.org)
 - Static Types with [TypeScript](https://typescriptlang.org)
-- End-to-end testing with [Cypress](https://cypress.io) (Coming Soon)
+- End-to-end testing with [Playwright](https://playwright.dev/) (Coming Soon)
 - Local third party request mocking with [MSW](https://mswjs.io) (Coming Soon)
 - Unit testing with [Vitest](https://vitest.dev) and [Testing Library](https://testing-library.com) (Coming Soon)
 
