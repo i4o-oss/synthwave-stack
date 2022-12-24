@@ -93,11 +93,16 @@ const Document = (props: DocumentProps) => {
 			<body className='h-full w-full bg-brand-900 font-sans'>
 				{process.env.NODE_ENV === 'production' ? (
 					<>
-						{/* TODO: fill data-domain */}
+						{/*
+							TODO: fill data-code
+							// get data-code by visiting dashboard.pirsch.io and clicking on the website you want to track
+						*/}
 						<script
 							defer
-							data-domain=''
-							src='https://plausible.io/js/plausible.js'
+							type='text/javascript'
+							src='https://api.pirsch.io/pirsch.js'
+							id='pirschjs'
+							data-code=''
 						></script>
 					</>
 				) : null}
