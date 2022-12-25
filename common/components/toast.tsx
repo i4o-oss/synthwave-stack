@@ -1,7 +1,8 @@
 import type { FC, ReactNode } from 'react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as ToastPrimitive from '@radix-ui/react-toast'
 import cx from 'classnames'
+import { Button } from '@common/components/buttons'
 
 export const ToastProvider = ToastPrimitive.ToastProvider
 export const ToastRoot = ToastPrimitive.Root
@@ -11,11 +12,13 @@ export const ToastAction = ToastPrimitive.Action
 export const ToastViewport = ToastPrimitive.Viewport
 
 type ToastProps = {
-	title?: string
-	description?: string
+	title?: ReactNode | string
+	description?: ReactNode | string
 	action?: ReactNode
 	actionAltText?: string
-	trigger: ReactNode
+	trigger?: ReactNode
+	isOpen?: boolean
+	duration?: number
 }
 
 const Toast: FC<ToastProps> = ({
@@ -24,12 +27,38 @@ const Toast: FC<ToastProps> = ({
 	action,
 	actionAltText,
 	trigger,
+	isOpen,
+	duration = 3000,
 }) => {
-	const [open, setOpen] = useState(false)
+	const [isToastOpen, setIsToastOpen] = useState(isOpen || false)
+	const timerRef = useRef<number>(0)
+
+	useEffect(() => {
+		if (!trigger) {
+			setIsToastOpen(false)
+			timerRef.current = window.setTimeout(() => {
+				setIsToastOpen(true)
+			}, 100)
+		}
+
+		return () => clearTimeout(timerRef.current)
+	}, [trigger, duration, isOpen])
 
 	return (
 		<ToastProvider swipeDirection='right'>
-			{trigger}
+			{trigger && (
+				<Button
+					onClick={() => {
+						setIsToastOpen(false)
+						window.clearTimeout(timerRef.current)
+						timerRef.current = window.setTimeout(() => {
+							setIsToastOpen(true)
+						}, 100)
+					}}
+				>
+					{trigger}
+				</Button>
+			)}
 			<ToastRoot
 				className={cx(
 					'fixed inset-x-4 bottom-4 z-50 w-auto rounded-lg shadow-lg md:top-4 md:right-4 md:left-auto md:bottom-auto md:w-full md:max-w-sm',
@@ -41,8 +70,9 @@ const Toast: FC<ToastProps> = ({
 					'radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]',
 					'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
 				)}
-				open={open}
-				onOpenChange={setOpen}
+				duration={duration}
+				open={isToastOpen}
+				onOpenChange={setIsToastOpen}
 			>
 				<div className='flex'>
 					<div className='flex w-0 flex-1 items-center py-4 pl-5'>

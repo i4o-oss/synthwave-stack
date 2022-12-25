@@ -11,23 +11,25 @@ const PrimaryButton: FC<PrimaryButtonProps> = ({
 	bg = 'bg-brand-500',
 	children,
 	className,
-	isDisabled,
-	isLoading,
+	disabled,
+	loading,
 	loadingText,
 	onClick,
 	shadow = 'shadow-md',
 	textColor = 'text-white',
+	tooltip = '',
 	type = 'button',
 }) => {
 	return (
 		<Button
 			bg={bg}
 			className={`${className} ${shadow}`}
-			isDisabled={isDisabled}
-			isLoading={isLoading}
+			disabled={disabled}
+			loading={loading}
 			loadingText={loadingText}
 			onClick={onClick}
 			textColor={textColor}
+			tooltip={tooltip}
 			type={type}
 		>
 			{children}

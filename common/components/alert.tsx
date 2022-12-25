@@ -20,6 +20,7 @@ type AlertProps = {
 	cancel: ReactNode
 	action: ReactNode
 	trigger?: ReactNode
+	isOpen?: boolean
 }
 
 const Alert: FC<AlertProps> = ({
@@ -28,14 +29,15 @@ const Alert: FC<AlertProps> = ({
 	cancel,
 	action,
 	trigger = null,
+	isOpen,
 }) => {
-	let [isOpen, setIsOpen] = useState(false)
+	let [isAlertOpen, setIsAlertOpen] = useState(isOpen || false)
 
 	return (
-		<AlertRoot open={isOpen} onOpenChange={setIsOpen}>
+		<AlertRoot open={isAlertOpen} onOpenChange={setIsAlertOpen}>
 			{trigger && <AlertTrigger asChild>{trigger}</AlertTrigger>}
 			<AlertPortal>
-				<Transition.Root show={isOpen}>
+				<Transition.Root show={isAlertOpen}>
 					<Transition.Child
 						as={Fragment}
 						enter='ease-out duration-300'
@@ -80,26 +82,8 @@ const Alert: FC<AlertProps> = ({
 								</AlertDescription>
 							)}
 							<div className='mt-4 flex justify-end space-x-2'>
-								<AlertCancel
-									className={cx(
-										'inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium',
-										'bg-white text-gray-900 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-100 hover:dark:bg-gray-600',
-										'border border-gray-300 dark:border-transparent',
-										'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
-									)}
-								>
-									{cancel}
-								</AlertCancel>
-								<AlertAction
-									className={cx(
-										'inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium',
-										'bg-purple-600 text-white hover:bg-purple-700 dark:bg-purple-700 dark:text-gray-100 dark:hover:bg-purple-600',
-										'border border-transparent',
-										'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75'
-									)}
-								>
-									{action}
-								</AlertAction>
+								<AlertCancel>{cancel}</AlertCancel>
+								<AlertAction>{action}</AlertAction>
 							</div>
 						</AlertContent>
 					</Transition.Child>

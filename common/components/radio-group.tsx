@@ -17,17 +17,26 @@ type RadioGroupProps = {
 	className?: string
 	defaultValue: string
 	options: RadioOption[]
+	name: string
+	onChange?: (value: string) => void
 }
 
 const RadioGroup: FC<RadioGroupProps> = ({
 	className,
 	defaultValue,
 	options,
+	name,
+	onChange,
 }) => {
 	return (
-		<RadioGroupRoot className={className} defaultValue={defaultValue}>
-			{options.map((option) => (
-				<div className='flex items-center space-x-2'>
+		<RadioGroupRoot
+			className={className}
+			defaultValue={defaultValue}
+			name={name}
+			onValueChange={onChange}
+		>
+			{options.map((option, index) => (
+				<div key={index} className='flex items-center space-x-2'>
 					<RadioGroupItem
 						className={cx(
 							// Setting the background in dark properly requires a workaround (see css/tailwind.css)

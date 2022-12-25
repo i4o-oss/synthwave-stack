@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react'
-import type React from 'react'
+import type { MouseEventHandler, ReactNode } from 'react'
 
 export enum ButtonSize {
 	LG,
@@ -10,17 +9,19 @@ export enum ButtonSize {
 
 export interface ButtonProps {
 	bg?: string
+	borderRadius?: string
 	children?: ReactNode | string
 	className?: string
-	isDisabled?: boolean
-	isLoading?: boolean
+	disabled?: boolean
+	loading?: boolean
 	loadingText?: string
-	onClick?: React.MouseEventHandler<HTMLButtonElement>
+	onClick?: MouseEventHandler<HTMLButtonElement>
 	padding?: string
 	leftIcon?: ReactNode
 	rightIcon?: ReactNode
 	shadow?: string
 	size?: ButtonSize
 	textColor?: string
+	tooltip?: string
 	type?: 'button' | 'submit' | 'reset'
 }
