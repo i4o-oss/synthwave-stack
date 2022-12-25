@@ -1,50 +1,59 @@
-import type { ReactNode } from 'react'
 import { Link } from '@remix-run/react'
 import { ArrowTopRightIcon } from '@radix-ui/react-icons'
-
-type ContainerProps = {
-	children: ReactNode
-}
-
-export function Container(props: ContainerProps) {
-	return (
-		<div className='flex h-full w-full items-start justify-center'>
-			<div className='container flex h-full w-full flex-col items-center justify-center space-y-8 text-white'>
-				{props.children}
-			</div>
-		</div>
-	)
-}
+import { ExternalLink } from 'react-feather'
 
 export default function Index() {
 	return (
-		<Container>
-			<img className='w-48' src='/images/logoipsum.svg' alt='Logo' />
-			<div className='flex w-full flex-col items-center justify-center space-y-2'>
-				<p className='text-center text-lg leading-8 text-white md:w-1/2'>
-					Headline that describes your web app
+		<main className='flex flex-col items-center justify-between p-24 min-h-screen bg-[url("/images/bg.png")] bg-no-repeat bg-cover bg-center bg-opacity-50'>
+			<div className='flex w-full container items-center justify-between'>
+				<p className='text-center text-sm leading-8 text-white bg-brand-900 border border-gray-800 px-4 py-2 rounded-lg'>
+					Get started by editing{' '}
+					<code className='text-brand-500'>app/routes/index.tsx</code>
 				</p>
-				<p className='text-center text-lg leading-8 text-gray-400 md:w-1/2'>
-					Subtitle about what your web app does
-				</p>
+				<div className='flex items-center text-gray-200 space-x-2 border border-gray-800 px-4 py-2 rounded-lg text-sm'>
+					Stack by&nbsp;
+					<a
+						className='flex items-center space-x-2 text-brand-500'
+						href='https://i4o.dev'
+					>
+						<p className='text-center text-md leading-8'>i4o.dev</p>
+						<ExternalLink className='w-4 h-4' />
+					</a>
+				</div>
 			</div>
-			<div className='flex items-center justify-center space-x-4'>
-				<Link to='/app'>
-					<button className='text-md inline-flex hidden justify-center rounded-md border border-transparent bg-brand-500 px-4 py-2 font-semibold text-brand-800 transition-all duration-200 hover:bg-brand-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2'>
-						Go to App
-					</button>
-				</Link>
+			<div className='w-full container flex items-center justify-center space-x-4 font-["Orbitron"] text-8xl'>
+				Synthwave Stack
+			</div>
+			<div className='grid grid-cols-2 w-full container gap-4'>
 				<a
+					href='https://github.com/i4o-oss/synthwave-stack'
+					className='px-4 py-6 rounded-lg border border-gray-800 bg-brand-900'
 					target='_blank'
-					href='https://twitter.com/_ilango'
-					rel='noreferrer'
+					rel='noopener noreferrer'
 				>
-					<button className='flex items-center justify-center rounded-md bg-transparent px-4 py-2 text-base font-medium leading-8 text-brand-500'>
-						<span>Twitter</span>
-						<ArrowTopRightIcon className='ml-1 mt-1 h-[18px] w-[18px]' />
-					</button>
+					<h2 className='text-gray-200'>
+						Docs <span>-&gt;</span>
+					</h2>
+					<p className='text-gray-200'>
+						Find in-depth information about Synthwave Stack's
+						features.
+					</p>
+				</a>
+
+				<a
+					href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
+					className='px-4 py-6 rounded-lg border border-gray-800 bg-brand-900'
+					target='_blank'
+					rel='noopener noreferrer'
+				>
+					<h2 className='text-gray-200'>
+						Checkout Remix <span>-&gt;</span>
+					</h2>
+					<p className='text-gray-200'>
+						Learn more about the Remix framework.
+					</p>
 				</a>
 			</div>
-		</Container>
+		</main>
 	)
 }

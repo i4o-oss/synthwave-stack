@@ -3,7 +3,6 @@ import { json } from '@remix-run/node'
 import { Form, useLoaderData } from '@remix-run/react'
 import { auth } from '~/services/auth.server'
 import { sessionStorage } from '~/services/session.server'
-import { Container } from '~/routes/index'
 import { FaTwitter } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 
@@ -29,7 +28,7 @@ export default function () {
 	let { magicLinkSent } = useLoaderData<{ magicLinkSent: boolean }>()
 
 	return (
-		<Container>
+		<main className='flex flex-col items-center justify-between p-24 min-h-screen'>
 			<Form action='/login' method='post'>
 				<div className='flex flex-col items-center justify-center'>
 					<div className='mb-8 flex flex-col items-center justify-center space-y-8'>
@@ -90,6 +89,6 @@ export default function () {
 					</button>
 				</div>
 			</Form>
-		</Container>
+		</main>
 	)
 }
