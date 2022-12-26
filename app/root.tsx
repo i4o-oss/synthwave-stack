@@ -38,18 +38,20 @@ export const meta: MetaFunction = () => ({
 	charset: 'utf-8',
 	'msapplication-TileColor': '#2b5797',
 	'og:site': '',
-	'og:url': '',
-	'og:title': '',
-	'og:description': '',
+	'og:url': 'https://stack.i4o.dev',
+	'og:title': 'Synthwave Stack',
+	'og:description':
+		'A custom Remix stack for building web apps using React, Tailwind, and TypeScript.',
 	'og:image': '',
 	'theme-color': '',
 	title: '',
 	'twitter:card': 'summary_large_image',
 	'twitter:site': '',
-	'twitter:url': '',
-	'twitter:creator': '',
-	'twitter:title': '',
-	'twitter:description': '',
+	'twitter:url': 'https://stack.i4o.dev',
+	'twitter:creator': 'Ilango Rajagopal',
+	'twitter:title': 'Synthwave Stack',
+	'twitter:description':
+		'A custom Remix stack for building web apps using React, Tailwind, and TypeScript.',
 	'twitter:image': '',
 	viewport: 'width=device-width,initial-scale=1',
 })
@@ -89,6 +91,7 @@ const Document = (props: DocumentProps) => {
 			<head>
 				<Meta />
 				<Links />
+				<title>Synthwave Stack</title>
 			</head>
 			<body className='h-full w-full bg-brand-900 font-sans'>
 				{process.env.NODE_ENV === 'production' ? (
