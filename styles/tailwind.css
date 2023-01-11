@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+
+}
+
 #nprogress .bar {
 	@apply bg-brand-500;
 }

@@ -1,10 +1,8 @@
-import { Link } from '@remix-run/react'
-import { ArrowTopRightIcon } from '@radix-ui/react-icons'
 import { ExternalLink } from 'react-feather'
 
 export default function Index() {
 	return (
-		<main className='flex flex-col items-center justify-between p-24 min-h-screen bg-[url("/images/bg.png")] bg-no-repeat bg-cover bg-center bg-opacity-50'>
+		<main className='flex flex-col items-center justify-between p-24 min-h-screen'>
 			<div className='flex w-full container items-center justify-between'>
 				<p className='text-center text-sm leading-8 text-white bg-brand-900 border border-gray-800 px-4 py-2 rounded-lg'>
 					Get started by editing{' '}
@@ -21,7 +19,7 @@ export default function Index() {
 					</a>
 				</div>
 			</div>
-			<div className='w-full container flex items-center justify-center space-x-4 font-["Orbitron"] text-8xl'>
+			<div className='w-full container flex items-center justify-center space-x-4 font-["Orbitron"] text-8xl text-white'>
 				Synthwave Stack
 			</div>
 			<div className='grid grid-cols-2 w-full container gap-4'>
