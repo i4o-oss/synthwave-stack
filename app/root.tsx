@@ -14,7 +14,8 @@ import { useEffect } from 'react'
 // @ts-ignore
 import NProgress from 'nprogress'
 import nProgressStyles from 'nprogress/nprogress.css'
-import styles from './tailwind.css'
+import styles from './styles/app.css'
+import cuiStyles from '@i4o-oss/catalystui/main.css'
 
 interface DocumentProps {
 	children: React.ReactNode

@@ -13,7 +13,7 @@ node_modules
 /.next/
 /build/
 /public/build
-app/tailwind.css
+app/styles/app.css
 api/index.js
 api/index.js.map
 
