@@ -31,6 +31,7 @@ export const links: LinksFunction = () => {
 		},
 		{ rel: 'stylesheet', href: styles },
 		{ rel: 'stylesheet', href: nProgressStyles },
+		{ rel: 'stylesheet', href: cuiStyles },
 	]
 }
 
@@ -94,7 +95,7 @@ const Document = (props: DocumentProps) => {
 				<Links />
 				<title>Synthwave Stack</title>
 			</head>
-			<body className='h-full w-full bg-brand-900 font-sans'>
+			<body className='h-full w-full bg-[#040303] font-sans'>
 				{process.env.NODE_ENV === 'production' ? (
 					<>
 						{/*
