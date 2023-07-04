@@ -18,7 +18,7 @@ auth.use(
 		{
 			sendEmail,
 			secret: MAGIC_LINK_SECRET,
-			callbackURL: '/verify',
+			callbackURL: '/api/verify',
 			validateSessionMagicLink: true,
 		},
 		async ({
