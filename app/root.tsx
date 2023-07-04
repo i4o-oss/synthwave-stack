@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react'
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import React, { useEffect, useMemo } from 'react'
+import type { LinksFunction, LoaderArgs, MetaFunction, SerializeFrom } from '@remix-run/node'
+import { json } from '@remix-run/node'
 import {
 	Links,
 	LiveReload,
@@ -8,14 +9,16 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useFetchers,
-	useTransition,
+    useLoaderData,
+    useNavigation,
 } from '@remix-run/react'
-import { useEffect } from 'react'
 // @ts-ignore
 import NProgress from 'nprogress'
 import nProgressStyles from 'nprogress/nprogress.css'
-import styles from './styles/app.css'
-import cuiStyles from '@i4o-oss/catalystui/main.css'
+import { getThemeSession } from './lib/theme.server'
+import { ThemeHead, ThemeProvider, useTheme } from './lib/theme'
+import styles from '~/main.css'
+import cuiStyles from '@i4o/catalystui/main.css'
 
 interface DocumentProps {
 	children: React.ReactNode
@@ -58,8 +61,20 @@ export const meta: MetaFunction = () => ({
 	viewport: 'width=device-width,initial-scale=1',
 })
 
-const Document = (props: DocumentProps) => {
-	const transition = useTransition()
+export type LoaderData = SerializeFrom<typeof loader>
+
+export const loader = async ({ request }: LoaderArgs) => {
+	const themeSession = await getThemeSession(request)
+
+	return json({
+		theme: themeSession.getTheme(),
+	})
+}
+
+const Document = ({ children }: DocumentProps) => {
+	const data = useLoaderData<LoaderData>()
+	const [theme] = useTheme()
+	const navigation = useNavigation()
 	const fetchers = useFetchers()
 
 	/**
@@ -71,13 +86,20 @@ const Document = (props: DocumentProps) => {
 	let state = useMemo<'idle' | 'loading'>(
 		function getGlobalState() {
 			let states = [
-				transition.state,
-				...fetchers.map((fetcher) => fetcher.state),
+				navigation.state,
+				...fetchers
+					.filter(
+						// use navigation.state only for page navigation.
+						// any navigation with formAction that starts with "/api" should be ignored
+						// this is done so any api call does not trigger nprogress and should only appear for page navigation
+						(fetcher) => !fetcher.formAction?.startsWith('/api')
+					)
+					.map((fetcher) => fetcher.state),
 			]
 			if (states.every((state) => state === 'idle')) return 'idle'
 			return 'loading'
 		},
-		[transition.state, fetchers]
+		[navigation.state, fetchers]
 	)
 
 	useEffect(() => {
@@ -86,32 +108,35 @@ const Document = (props: DocumentProps) => {
 		if (state === 'loading') NProgress.start()
 		// when the state is idle then we can to complete the progress bar
 		if (state === 'idle') NProgress.done()
-	}, [transition.state, state])
+	}, [navigation.state, state])
 
 	return (
-		<html lang='en' className='h-full'>
+		<html
+			lang='en'
+			className={`h-screen w-screen ${
+				theme ?? ''
+			} cui-${theme} au-${theme}`}
+		>
 			<head>
 				<Meta />
 				<Links />
-				<title>Synthwave Stack</title>
+				<ThemeHead ssrTheme={Boolean(data.theme)} />
 			</head>
-			<body className='h-full w-full bg-[#040303] font-sans'>
-				{process.env.NODE_ENV === 'production' ? (
-					<>
-						{/*
-							TODO: fill data-code
-							// get data-code by visiting dashboard.pirsch.io and clicking on the website you want to track
-						*/}
-						<script
-							defer
-							type='text/javascript'
-							src='https://api.pirsch.io/pirsch.js'
-							id='pirschjs'
-							data-code=''
-						></script>
-					</>
-				) : null}
-				{props.children}
+			<body className='bg-primary h-full w-full font-sans'>
+				{process.env.NODE_ENV !== 'development' ? (
+					<script
+						async
+						src='https://analytics.i4o.dev/script.js'
+						data-website-id='7621579d-ef19-4240-bef7-51e71ee9fa96'
+					></script>
+				) : (
+					<script
+						async
+						src='https://analytics.i4o.dev/script.js'
+						data-website-id='efb3fedc-7312-4e9f-bb7d-7a2085019dd1'
+					></script>
+				)}
+				{children}
 				<ScrollRestoration />
 				<Scripts />
 				{process.env.NODE_ENV === 'development' ? <LiveReload /> : null}
@@ -120,10 +145,20 @@ const Document = (props: DocumentProps) => {
 	)
 }
 
-export default function App() {
+function App() {
 	return (
 		<Document>
 			<Outlet />
 		</Document>
+	)
+}
+
+export default function AppWithProviders() {
+	const data = useLoaderData<LoaderData>()
+
+	return (
+		<ThemeProvider specifiedTheme={data.theme}>
+			<App />
+		</ThemeProvider>
 	)
 }
