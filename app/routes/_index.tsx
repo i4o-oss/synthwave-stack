@@ -147,20 +147,10 @@ function Hero() {
 								components and utilites
 							</p>
 							<div className='mt-10 flex items-center justify-center gap-x-6'>
-								<Link to='/docs'>
-									<PrimaryButton
-										className='h-12'
-										padding='px-8'
-										textSize='text-base'
-									>
-										Get Started
-									</PrimaryButton>
-								</Link>
-
-								<pre className='flex h-12 w-96 items-center justify-between space-x-2 rounded-lg border border-slate-100 bg-white !pl-4 !pr-2 dark:border-slate-700 dark:bg-[#040303]'>
-									<code className='flex w-full items-center justify-between font-mono text-sm font-semibold text-slate-900 dark:text-slate-50'>
-										npm install @i4o/rescribe
-										<CopyToClipboard text='npm add @i4o/rescribe' />
+								<pre className='flex h-12 w-auto items-center justify-between space-x-2 rounded-lg border border-slate-100 bg-white !pl-4 !pr-2 dark:border-slate-700 dark:bg-[#040303]'>
+									<code className='flex w-full items-center justify-between font-mono text-sm font-semibold text-slate-900 dark:text-slate-50 gap-x-4'>
+                                        pnpm create remix@latest --template i4o-oss/synthwave-stack
+										<CopyToClipboard text='pnpm create remix@latest --template i4o-oss/synthwave-stack' />
 									</code>
 								</pre>
 							</div>
@@ -316,12 +306,6 @@ function Features() {
 					<p className='mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-tight'>
 						Everything you need to build excellent documentations
 					</p>
-					{/* <p className='mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300'> */}
-					{/* 	Quis tellus eget adipiscing convallis sit sit */}
-					{/* 	eget aliquet quis. Suspendisse eget egestas a */}
-					{/* 	elementum pulvinar et feugiat blandit at. In mi */}
-					{/* 	viverra elit nunc. */}
-					{/* </p> */}
 				</div>
 				<div className='mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-5xl'>
 					<dl className='grid max-w-xl grid-cols-2 gap-y-10 gap-x-8 lg:max-w-none lg:grid-cols-2 lg:gap-y-16'>
