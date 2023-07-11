@@ -77,9 +77,6 @@ dependencies:
   remix-auth-twitter:
     specifier: 2.0.0-1
     version: 2.0.0-1(@remix-run/react@1.18.0)(@remix-run/server-runtime@1.18.0)
-  tailwindcss-radix:
-    specifier: 2.8.0
-    version: 2.8.0
   twitter-api-v2:
     specifier: ^1.15.0
     version: 1.15.0
