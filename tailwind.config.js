@@ -1,7 +1,6 @@
-const tailwindRadix = require('tailwindcss-radix')
-
 module.exports = {
 	content: ['./app/**/*.{js,jsx,ts,tsx}', './common/**/*.{js,jsx,ts,tsx}'],
+	darkMode: 'class',
 	theme: {
 		extend: {
 			colors: {
@@ -22,9 +21,7 @@ module.exports = {
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				serif: ['Merriweather', 'serif'],
-				serif: ['Orbitron', 'serif'],
 			},
 		},
 	},
-	plugins: [tailwindRadix()],
 }

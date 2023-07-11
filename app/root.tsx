@@ -1,5 +1,10 @@
 import React, { useEffect, useMemo } from 'react'
-import type { LinksFunction, LoaderArgs, SerializeFrom, V2_MetaFunction } from '@remix-run/node'
+import type {
+	LinksFunction,
+	LoaderArgs,
+	SerializeFrom,
+	V2_MetaFunction,
+} from '@remix-run/node'
 import { json } from '@remix-run/node'
 import {
 	Links,
@@ -9,8 +14,8 @@ import {
 	Scripts,
 	ScrollRestoration,
 	useFetchers,
-    useLoaderData,
-    useNavigation,
+	useLoaderData,
+	useNavigation,
 } from '@remix-run/react'
 // @ts-ignore
 import NProgress from 'nprogress'
@@ -40,71 +45,68 @@ export const links: LinksFunction = () => {
 
 // TODO: fill out the empty strings as required
 export const meta: V2_MetaFunction = () => [
-    {
-        charSet: 'utf-8',
-    },
-    {
-        property: 'og:site',
-        content: '',
-    },
-    {
-        property: 'og:url',
-        content: '',
-    },
-    {
-        property: 'og:title',
-        content: '',
-    },
-    {
-        property: 'og:description',
-        content:
-            '',
-    },
-    {
-        property: 'og:image',
-        content: '',
-    },
-    {
-        title: 'Synthwave Stack',
-    },
-    {
-        name: 'description',
-        content:
-            '',
-    },
-    {
-        name: 'twitter:card',
-        content: 'summary_large_image',
-    },
-    {
-        name: 'twitter:site',
-        content: '',
-    },
-    {
-        name: 'twitter:url',
-        content: '',
-    },
-    {
-        name: 'twitter:creator',
-        content: '@i4o_dev',
-    },
-    {
-        name: 'twitter:title',
-        content: 'Synthwave Stack',
-    },
-    {
-        name: 'twitter:description',
-        content:
-            '',
-    },
-    {
-        name: 'twitter:image',
-        content: '',
-    },
-    {
-        name: 'viewport',
-        content: 'width=device-width,initial-scale=1',
-    },
+	{
+		charSet: 'utf-8',
+	},
+	{
+		property: 'og:site',
+		content: '',
+	},
+	{
+		property: 'og:url',
+		content: '',
+	},
+	{
+		property: 'og:title',
+		content: '',
+	},
+	{
+		property: 'og:description',
+		content: '',
+	},
+	{
+		property: 'og:image',
+		content: '',
+	},
+	{
+		title: 'Synthwave Stack',
+	},
+	{
+		name: 'description',
+		content: '',
+	},
+	{
+		name: 'twitter:card',
+		content: 'summary_large_image',
+	},
+	{
+		name: 'twitter:site',
+		content: '',
+	},
+	{
+		name: 'twitter:url',
+		content: '',
+	},
+	{
+		name: 'twitter:creator',
+		content: '@i4o_dev',
+	},
+	{
+		name: 'twitter:title',
+		content: 'Synthwave Stack',
+	},
+	{
+		name: 'twitter:description',
+		content: '',
+	},
+	{
+		name: 'twitter:image',
+		content: '',
+	},
+	{
+		name: 'viewport',
+		content: 'width=device-width,initial-scale=1',
+	},
 ]
 
 export type LoaderData = SerializeFrom<typeof loader>
@@ -159,16 +161,14 @@ const Document = ({ children }: DocumentProps) => {
 	return (
 		<html
 			lang='en'
-			className={`h-screen w-screen ${
-				theme ?? ''
-			} cui-${theme} au-${theme}`}
+			className={`h-screen w-screen ${theme ?? ''} cui-${theme}`}
 		>
 			<head>
 				<Meta />
 				<Links />
 				<ThemeHead ssrTheme={Boolean(data.theme)} />
 			</head>
-			<body className='bg-primary h-full w-full font-sans'>
+			<body className='h-full w-full bg-white dark:bg-[#040303] font-sans'>
 				{process.env.NODE_ENV !== 'development' ? (
 					<script
 						async
