@@ -32,21 +32,21 @@ Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --
 
 ## Development
 
--   Install dependencies:
+Install dependencies:
 
-    ```sh
-    pnpm i
-    ```
+```sh
+pnpm i
+```
 
--   Start dev server:
+Start dev server:
 
-    ```sh
-    pnpm dev
-    ```
+```sh
+pnpm dev
+```
 
-This starts your app in development mode, rebuilding assets on file changes.
+_Note: Uses Remix App Server with HMR/HDR. Feel free to switch to a different server._
 
-### Documentation:
+## Documentation:
 
 Coming Soon
 
