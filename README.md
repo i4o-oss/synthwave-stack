@@ -17,7 +17,7 @@ pnpm create remix@latest --template i4o-oss/synthwave-stack
 - ORM - [Prisma](https://prisma.io)
 - Built-in magic links, sign in with Google and Twitter - [remix-auth](https://github.com/sergiodxa/remix-auth/)
 - Upload Files to [Cloudflare R2](https://www.cloudflare.com/products/r2/)
-- Transactional emails with [Resend](https://resend.com/)
+- Transactional emails - [Resend](https://resend.com/)
 - Component Library - [Catalyst UI](https://catalyst-ui.com)
 - Styling - [TailwindCSS](https://tailwindcss.com)
 - Analytics - [Amplitude](https://amplitude.com)
@@ -25,7 +25,7 @@ pnpm create remix@latest --template i4o-oss/synthwave-stack
 - Code formatting and linting
 - Health check API route
 - End-to-end testing with [Playwright](https://playwright.dev/) (Coming Soon)
-- Local third party request mocking with [MSW](https://mswjs.io) (Coming Soon)
+- Local third-party request mocking with [MSW](https://mswjs.io) (Coming Soon)
 - Unit testing with [Vitest](https://vitest.dev) and [Testing Library](https://testing-library.com) (Coming Soon)
 
 Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
