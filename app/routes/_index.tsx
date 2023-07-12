@@ -7,6 +7,7 @@ import {
     LockClosedIcon,
     MixIcon,
     RocketIcon,
+    TwitterLogoIcon,
 } from '@radix-ui/react-icons'
 import { CopyToClipboard, Switch } from '@i4o/catalystui'
 import { Theme, useTheme } from '~/lib/theme'
@@ -54,7 +55,20 @@ const SOCIALS = [
     {
         ariaLabel: 'Github Repository',
         icon: <GitHubLogoIcon className='h-6 w-6' />,
-        href: 'https://github.com/i4o-oss/rescribe',
+        href: 'https://github.com/i4o-oss/synthwave-stack',
+    },
+]
+
+const FOOTER_SOCIALS = [
+    {
+        ariaLabel: 'Github Repository',
+        icon: <GitHubLogoIcon className='h-6 w-6' />,
+        href: 'https://github.com/i4o-oss/synthwave-stack',
+    },
+    {
+        ariaLabel: 'Twitter Profile',
+        icon: <TwitterLogoIcon className='h-6 w-6' />,
+        href: 'https://twitter.com/i4o_dev',
     },
 ]
 
@@ -78,7 +92,7 @@ function DarkModeToggle() {
 
 function Navbar() {
     return (
-        <header className='supports-backdrop-blur:bg-white/60 sticky top-0 z-50 flex h-20 w-full flex-wrap items-center justify-between px-4 py-4 shadow-sm shadow-gray-200 backdrop-blur dark:bg-transparent dark:shadow-gray-700 sm:px-6 lg:px-8'>
+        <header className='supports-backdrop-blur:bg-white/60 sticky top-0 z-50 flex h-20 w-screen flex-wrap items-center justify-between px-4 py-4 shadow-sm shadow-gray-200 backdrop-blur dark:bg-transparent dark:shadow-gray-700 sm:px-6 lg:px-8'>
             <div className='relative flex flex-grow basis-0 items-center'>
                 <Link aria-label='Home page' to='/'>
                     <img
@@ -333,6 +347,100 @@ function Features() {
     )
 }
 
+function CTA() {
+    return (
+        <div className='py-24 sm:py-32'>
+            <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+                <div className='relative isolate overflow-hidden bg-brand-900 px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0'>
+                    <div className='mx-auto text-center lg:mx-0 lg:flex-auto lg:py-32'>
+                        <h2 className='text-3xl font-bold sm:text-4xl'>
+                            Start a project with Synthwave Stack today.
+                        </h2>
+                        <div className='mt-10 flex items-center justify-center gap-x-6'>
+                            <pre className='flex h-12 w-auto items-center justify-between space-x-2 rounded-lg border border-slate-100 bg-white !pl-4 !pr-2 dark:border-slate-700 dark:bg-[#040303]'>
+                                <code className='flex w-full items-center justify-between font-mono text-sm font-semibold text-slate-900 dark:text-slate-50 gap-x-4'>
+                                    pnpm create remix@latest --template
+                                    i4o-oss/synthwave-stack
+                                    <CopyToClipboard text='pnpm create remix@latest --template i4o-oss/synthwave-stack' />
+                                </code>
+                            </pre>
+                        </div>
+                        <div className='mt-10 flex flex-col items-center justify-center gap-8'>
+                            <a
+                                href='https://github.com/i4o-oss/synthwave-stack'
+                                className='text-base font-semibold leading-6 text-white'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                            >
+                                Star us on Github
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+function Footer() {
+    return (
+        <div className='sticky top-0 z-50 flex h-20 w-screen flex-wrap items-center justify-center border-t border-gray-200 py-4 dark:border-gray-700'>
+            <div className='flex w-[88rem] items-center justify-between sm:px-2 lg:px-8 xl:px-12'>
+                <div className='flex items-center gap-2 text-gray-900 dark:text-gray-400'>
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                    >
+                        <path d='m7 11 2-2-2-2'></path>
+                        <path d='M11 13h4'></path>
+                        <rect
+                            x='3'
+                            y='3'
+                            width='18'
+                            height='18'
+                            rx='2'
+                            ry='2'
+                        ></rect>
+                    </svg>
+                    <p>
+                        Built by{' '}
+                        <a
+                            className='underline'
+                            href='https://i4o.dev'
+                            target='_blank'
+                            rel='noreferrer noopener'
+                        >
+                            i4o
+                        </a>
+                        .
+                    </p>
+                </div>
+                <div className='flex items-center justify-end gap-4'>
+                    {FOOTER_SOCIALS.map((social, index) => (
+                        <a
+                            aria-label={social.ariaLabel}
+                            className='text-black dark:text-gray-100'
+                            href={social.href}
+                            key={`social-${index}`}
+                            rel='noreferrer noopener'
+                            target='_blank'
+                        >
+                            {social.icon}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+    )
+}
+
 export default function Index() {
     return (
         <>
@@ -341,7 +449,9 @@ export default function Index() {
                 <Hero />
                 <TechStack />
                 <Features />
+                <CTA />
             </div>
+            <Footer />
         </>
     )
 }

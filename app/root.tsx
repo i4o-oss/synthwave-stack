@@ -168,7 +168,7 @@ const Document = ({ children }: DocumentProps) => {
 				<Links />
 				<ThemeHead ssrTheme={Boolean(data.theme)} />
 			</head>
-			<body className='h-full w-full bg-white dark:bg-[#040303] font-sans'>
+			<body className='h-full w-full bg-white dark:bg-[#040303] font-sans overflow-x-hidden'>
 				{process.env.NODE_ENV !== 'development' ? (
 					<script
 						async
