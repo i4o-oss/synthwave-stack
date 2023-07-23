@@ -54,7 +54,7 @@ export default function () {
 								required
 							/>
 						</div>
-						<button className='flex h-12 w-full items-center justify-center rounded-md bg-brand-500'>
+						<button className='flex h-12 w-full items-center justify-center rounded-md bg-brand'>
 							Sign In
 						</button>
 					</div>
