@@ -5,22 +5,50 @@ module.exports = {
 		extend: {
 			colors: {
 				brand: {
-					DEFAULT: '#2CB67D',
-					50: '#E6F9F1',
-					100: '#D2F4E6',
-					200: '#A5E9CD',
-					300: '#77DEB3',
-					400: '#46D298',
-					500: '#2CB67D',
-					600: '#239062',
-					700: '#1B6F4C',
-					800: '#124A33',
-					900: '#092519',
+					DEFAULT: 'rgb(var(--brand) / <alpha-value>)',
+					subtle: 'rgb(var(--brand-subtle) / <alpha-value>)',
+					hover: 'rgb(var(--brand-hover) / <alpha-value>)',
+					states: 'rgb(var(--brand-states) / <alpha-value>)',
+				},
+				muted: {
+					DEFAULT: 'rgb(var(--muted) / <alpha-value>)',
+					foreground: 'rgb(var(--muted-foreground) / <alpha-value>)',
+				},
+				primary: {
+					DEFAULT: 'rgb(var(--primary) / <alpha-value>)',
+					subtle: 'rgb(var(--primary-subtle) / <alpha-value>)',
+					foreground:
+						'rgb(var(--primary-foreground) / <alpha-value>)',
+					'foreground-subtle':
+						'rgb(var(--primary-foreground-subtle) / <alpha-value>)',
+				},
+				subtle: {
+					DEFAULT: 'rgb(var(--subtle) / <alpha-value>)',
+				},
+				ui: {
+					DEFAULT: 'rgb(var(--ui) / <alpha-value>)',
+					hover: 'rgb(var(--ui-hover) / <alpha-value>)',
+					states: 'rgb(var(--ui-states) / <alpha-value>)',
 				},
 			},
 			fontFamily: {
 				sans: ['Inter', 'sans-serif'],
 				serif: ['Merriweather', 'serif'],
+			},
+			animation: {
+				text: 'text 5s ease infinite',
+			},
+			keyframes: {
+				text: {
+					'0%, 100%': {
+						'background-size': '200% 200%',
+						'background-position': 'left center',
+					},
+					'50%': {
+						'background-size': '200% 200%',
+						'background-position': 'right center',
+					},
+				},
 			},
 		},
 	},

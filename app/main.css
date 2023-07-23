@@ -2,14 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+@layer base {
+	:root {
+		--primary: 252 252 252;
+		--primary-subtle: 248 248 248;
+		--primary-foreground: 22 22 22;
+		--primary-foreground-subtle: 28 28 28;
+		--ui: 243 243 243;
+		--ui-hover: 237 237 237;
+		--ui-states: 232 232 232;
 
+		--subtle: 226 226 226;
+
+		--brand: 44 182 125;
+		--brand-hover: 70 210 152;
+		--brand-states: 119 222 179;
+
+		--muted: 210 40% 96.1%;
+		--muted-foreground: 215.4 16.3% 46.9%;
+	}
+
+	.dark {
+		--primary: 22 22 22;
+		--primary-subtle: 28 28 28;
+		--primary-foreground: 252 252 252;
+		--primary-foreground-subtle: 248 248 248;
+		--ui: 35 35 35;
+		--ui-hover: 40 40 40;
+		--ui-states: 46 46 46;
+
+		--subtle: 52 52 52;
+
+		--muted: 223 47% 11%;
+		--muted-foreground: 215.4 16.3% 56.9%;
+	}
+}
+
+body {
+	@apply overflow-x-hidden;
 }
 
 #nprogress .bar {
-	@apply bg-brand-500;
+	@apply bg-brand;
 }
 
 #nprogress .spinner-icon {
-	@apply border-t-brand-500 border-r-brand-500;
+	@apply border-t-brand border-r-brand;
 }
