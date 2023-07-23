@@ -24,9 +24,7 @@ pnpm create remix@latest --template i4o-oss/synthwave-stack
 - Error Tracking - [Sentry](https://sentry.io)
 - Code formatting and linting
 - Health check API route
-- End-to-end testing with [Playwright](https://playwright.dev/) (Coming Soon)
-- Local third-party request mocking with [MSW](https://mswjs.io) (Coming Soon)
-- Unit testing with [Vitest](https://vitest.dev) and [Testing Library](https://testing-library.com) (Coming Soon)
+- Billing and Subscriptions using LemonSqueezy (Coming Soon)
 
 Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
 
@@ -71,6 +69,3 @@ This project uses ESLint for linting. That is configured in `.eslintrc.js`.
 ### Formatting
 
 We use [Prettier](https://prettier.io/) for auto-formatting in this project. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save. There's also a `pnpm format` script you can run to format all files in the project.
-
-## Testing (Coming soon)
-
