@@ -41,6 +41,7 @@
         "zodix": "^0.4.1"
     },
     "devDependencies": {
+        "@flydotio/dockerfile": "^0.4.1",
         "@remix-run/dev": "1.19.0",
         "@remix-run/eslint-config": "1.19.0",
         "@types/formidable": "2.0.6",
