@@ -24,6 +24,6 @@ primary_region = "cdg"
     timeout = "2s"
     grace_period = "5s"
     method = "GET"
-    path = "/healthcheck"
+    path = "/api/health"
     protocol = "http"
     tls_skip_verify = false
