@@ -12,7 +12,7 @@ pnpm create remix@latest --template i4o-oss/synthwave-stack
 
 - Built with/for [Remix](https://remix.run)
 - Written in [TypeScript](https://typescriptlang.org)
-- Deploys to [Railway](https://railway.app)
+- Deploys to [Fly](https://fly.io)/[Railway](https://railway.app)
 - Database - [PlanetScale](https://planetscale.com)
 - ORM - [Prisma](https://prisma.io)
 - Built-in magic links, sign in with Google and Twitter - [remix-auth](https://github.com/sergiodxa/remix-auth/)
