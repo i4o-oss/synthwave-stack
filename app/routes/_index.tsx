@@ -168,14 +168,15 @@ function Hero() {
 			</div>
 			<main className='w-full'>
 				<div className='relative mx-auto flex w-full max-w-5xl justify-center px-6 lg:px-8'>
-					<div className='w-full max-w-2xl py-20 sm:py-32 lg:py-40'>
+					<div className='w-full max-w-3xl py-20 sm:py-32 lg:py-40'>
 						<div className='text-center'>
 							<h1 className='text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl sm:leading-tight'>
-								Ship modern, Remix-powered web apps fast
+								Ship modern web apps fast
 							</h1>
 							<p className='mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300'>
-								Save tons of time and effort with pre-configured
-								libraries and tools that developers love
+								Powered by Remix, this stack saves you tons of
+								time and effort with pre-configured libraries
+								and tools that developers love
 							</p>
 							<div className='mt-10 flex items-center justify-center gap-x-6'>
 								<pre className='flex h-12 w-auto items-center justify-between space-x-2 rounded-lg border border-slate-100 bg-white !pl-4 !pr-2 dark:border-slate-700 dark:bg-[#040303]'>
